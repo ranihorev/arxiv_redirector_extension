@@ -1,7 +1,7 @@
 {
-  "name": "ArxivFetcher",
+  "name": "ArxivColab",
   "version": "1.0",
-  "description": "Open Arxiv PDFs in KnowPro",
+  "description": "Open Arxiv PDFs in ArxivColab",
   "manifest_version": 2,
   "author": "Yarani",
   "background": {
@@ -9,7 +9,7 @@
   },
   "browser_action": {
     "default_icon": "icons/icon_on_32.png",
-    "default_title": "ArxivFetcher"
+    "default_title": "ArxivColab"
   },
   "permissions": [
     "storage",
