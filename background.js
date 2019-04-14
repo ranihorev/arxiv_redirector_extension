@@ -20,7 +20,7 @@ chrome.storage.onChanged.addListener(function(changes, area) {
 
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
-    if (isActive) return;
+    if (!isActive) return;
     const reg = /(\d+).(\d+)/;
     try {
       const id = reg.exec(details.url)[0];
