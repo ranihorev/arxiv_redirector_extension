@@ -1,32 +1,47 @@
 const host = "https://arxiv.lyrn.ai/paper/";
 const icons = {off: "icons/icon_off_32.png", on: "icons/icon_on_32.png"};
 
+var isActive = true;
+
+// Sync if already in storage
+chrome.storage.sync.get("isActive", function (data) {
+  if (data.isActive !== undefined) {
+    isActive = data.isActive;
+  }
+});
+
+// Update state on change
+chrome.storage.onChanged.addListener(function(changes, area) {
+  if (area == "sync" && "isActive" in changes) {
+    isActive = changes.isActive.newValue;
+    chrome.browserAction.setIcon({path: isActive ? icons.on : icons.off});
+  }
+});
+
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
-    chrome.storage.sync.get(['isActive'], function(result) {
-      if (!result.isActive) return;
-      const reg = /(\d+).(\d+)/;
-      try {
-        const id = reg.exec(details.url)[0];
-        return {redirectUrl: host + id};
-      } catch (e) {
-        console.log(e);
-      }
-    });
+    if (isActive) return;
+    const reg = /(\d+).(\d+)/;
+    try {
+      const id = reg.exec(details.url)[0];
+      return {redirectUrl: host + id};
+    } catch (e) {
+      console.log(e);
+    }
   },
   {
     urls: [
-      "*://arxiv.org/pdf/*"
+      "*://arxiv.org/pdf/*",
+      "*://www.arxiv.org/pdf/*",
     ],
     types: ["main_frame"]
   },
   ["blocking"]
 );
 
+// Set state on click
 chrome.browserAction.onClicked.addListener(function(tab) {
-  // chrome.storage.sync.set({ "isActive": false })
-  chrome.storage.sync.get(['isActive'], function(items) {
-    chrome.browserAction.setIcon({path: items.isActive ? icons.off : icons.on});
-    chrome.storage.sync.set({ "isActive": !items.isActive });
-  });
+  console.log('click' + isActive);
+  chrome.storage.sync.set({ "isActive": !isActive });
+
 });

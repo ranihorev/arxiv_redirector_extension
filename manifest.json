@@ -15,6 +15,7 @@
     "storage",
     "webRequest",
     "webRequestBlocking",
-    "*://arxiv.org/*"
+    "*://arxiv.org/*",
+    "*://www.arxiv.org/*"
   ]
 }
