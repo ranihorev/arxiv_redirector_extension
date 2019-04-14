@@ -1,4 +1,4 @@
-const host = "http://localhost:3000/paper/";
+const host = "https://arxiv.lyrn.ai/paper/";
 const icons = {off: "icons/icon_off_32.png", on: "icons/icon_on_32.png"};
 
 chrome.webRequest.onBeforeRequest.addListener(
