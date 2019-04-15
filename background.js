@@ -1,5 +1,6 @@
 const host = "https://arxiv.lyrn.ai/paper/";
 const icons = {off: "icons/icon_off_32.png", on: "icons/icon_on_32.png"};
+const ignoreString = 'download=1';
 
 var isActive = true;
 
@@ -22,6 +23,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     if (!isActive) return;
     const reg = /(\d+).(\d+)/;
+    if (details.url.indexOf(ignoreString) > 0) return;
     try {
       const id = reg.exec(details.url)[0];
       return {redirectUrl: host + id};
