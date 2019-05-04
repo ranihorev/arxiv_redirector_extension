@@ -1,4 +1,4 @@
-const host = "https://arxiv.lyrn.ai/paper/";
+const host = "https://www.scihive.org/paper/";
 const icons = {off: "icons/icon_off_32.png", on: "icons/icon_on_32.png"};
 const ignoreString = 'download=1';
 
