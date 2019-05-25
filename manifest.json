@@ -1,6 +1,6 @@
 {
   "name": "SciHive",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Open Arxiv PDFs in SciHive",
   "manifest_version": 2,
   "author": "Yarani",
@@ -19,6 +19,6 @@
     "*://www.arxiv.org/*"
   ],
   "externally_connectable": {
-    "matches": ["*://localhost/*", "*://www.scihive.com/*"]
+    "matches": ["*://localhost/*", "*://www.scihive.org/*"]
   }
 }
