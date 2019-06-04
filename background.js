@@ -25,11 +25,11 @@ chrome.storage.onChanged.addListener(function(changes, area) {
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
       if (!isActive) return;
-      const reg = /(\d+).(\d+)/;
+      const reg = /(\d+)\.(\d+)/;
       if (details.url.indexOf(ignoreString) > 0) return;
       try {
-        const id = reg.exec(details.url)[0];
-        return {redirectUrl: host + id};
+        const id = reg.exec(details.url);
+        if (id) return {redirectUrl: host + id[0]};
       } catch (e) {
         console.log(e);
       }
