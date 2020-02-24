@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<style>
+	.toolbar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		padding: 7px;
+		display:flex;
+		flex-direction: row;
+		justify-content: center;
+		background: #36a0f5;
+		color: white;
+		width: 100%;
+	}
+	.question {
+		margin-right: 30px;
+	}
+	.logo {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 30px;
+	}
+	.close {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 30px;
+	}
+</style>
+<script>
+
+</script>
+<div class="toolbar">
+	<div class="logo">
+		<!-- <img src="icons/scihive_white.png" /> -->
+	</div>
+	<div class="question">
+		Would you like to add this paper to your SciHive library?
+	</div>
+
+	<button type="button">Yes</button>
+	<button type="button">No</button>
+
+	<div class="close">
+		<i class="fas fa-times"></i>
+	</div>
+</div>

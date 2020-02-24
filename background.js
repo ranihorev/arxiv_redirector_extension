@@ -4,8 +4,7 @@ const icons = {
   on: 'icons/icon_on_32.png'
 };
 const ignoreString = 'download=1';
-
-var isActive = true;
+let isActive;
 
 // Sync if already in storage
 chrome.storage.sync.get('isActive', function(data) {
@@ -52,6 +51,13 @@ chrome.runtime.onMessageExternal.addListener(
       }
       return true;
     });
+
+/* when the toolbar button is clicked, insert a script to extract data from the current tab */
+chrome.browserAction.onClicked.addListener(function() {
+  chrome.tabs.executeScript(null, { file: "extract.js" }, function(result) {
+    window.open("http://www.scihive.org/import/?" + build_params(result[0]), "SciHive", "width=980,height=670");
+  });
+});
 
 // Set state on click
 chrome.browserAction.onClicked.addListener(function(tab) {
