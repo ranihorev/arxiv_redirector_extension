@@ -1,0 +1,47 @@
+{
+  "name": "SciHive",
+  "version": "2.0.0",
+  "description": "Open arXiv PDFs in SciHive and allows to add papers to your SciHive library",
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "author": "SciHive",
+  "background": {
+    "scripts": [
+      "background.bundle.js",
+      "hot-reload.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": "icon_on_32.png",
+    "default_title": "Add the current paper to your SciHive library"
+  },
+  "icons": {
+    "128": "icon_on_128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "*://arxiv.org/*",
+    "*://www.arxiv.org/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*.pdf",
+        "https://*/*.pdf"
+      ],
+      "exclude_matches": [
+        "https://www.scihive.org/*",
+        "http://www.scihive.org/*"
+      ],
+      "js": [
+        "content.bundle.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "*.png"
+  ]
+}
