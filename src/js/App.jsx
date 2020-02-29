@@ -40,6 +40,7 @@ const App = () => {
         style={{
           position: "relative",
           display: "flex",
+          justifyContent: "space-between",
           flexDirection: "row",
           alignItems: "center",
           padding: "12px 24px",
@@ -54,19 +55,24 @@ const App = () => {
             style={{ marginRight: 10 }}
           />
         </a>
-        <div style={{ marginRight: 10 }}>
-          PDF file was detected. Would you like to upload and read it on
-          SciHive?
-        </div>
-        <a
-          href={`https://www.scihive.org/library?upload_link=${window.location}`}
-        >
-          <Button>Yes</Button>
-        </a>
         <div
           style={{
-            position: "absolute",
-            right: 16,
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center"
+          }}
+        >
+          <div style={{ marginRight: 10 }}>
+            PDF file was detected. Would you like to read it on SciHive?
+          </div>
+          <a
+            href={`https://www.scihive.org/library?upload_link=${window.location}`}
+          >
+            <Button>Yes</Button>
+          </a>
+        </div>
+        <div
+          style={{
             lineHeight: 1,
             fontSize: 22,
             cursor: "pointer"

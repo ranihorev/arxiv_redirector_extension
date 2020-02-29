@@ -14,6 +14,10 @@ let isActive;
 chrome.storage.sync.get("isActive", function(data) {
   if (data.isActive !== undefined) {
     isActive = data.isActive;
+  } else {
+    // First run;
+    isActive = true;
+    chrome.storage.sync.set({ isActive });
   }
 });
 
