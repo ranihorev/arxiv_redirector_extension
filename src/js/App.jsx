@@ -17,7 +17,7 @@ const Button = ({ onClick, children }) => {
         borderRadius: 4,
         cursor: "pointer",
         lineHeight: 1,
-        fontSize: 14,
+        fontSize: 12,
         border: "none"
       }}
       css={{
@@ -86,6 +86,7 @@ const ActiveMode = ({ onHide }) => {
           alignItems: "center",
           padding: "12px 24px",
           fontFamily: "Arial",
+          fontSize: 14,
           color: "white"
         }}
       >
