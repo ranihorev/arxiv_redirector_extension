@@ -18,13 +18,13 @@ const Button = ({ onClick, children }) => {
         cursor: "pointer",
         lineHeight: 1,
         fontSize: 12,
-        border: "none"
+        border: "none",
       }}
       css={{
         backgroundColor: "white",
         "&:hover": {
-          backgroundColor: "#dedede"
-        }
+          backgroundColor: "#dedede",
+        },
       }}
       onClick={onClick}
     >
@@ -40,7 +40,7 @@ const DisabledMode = ({ onShow }) => {
         position: "fixed",
         zIndex: 99999999,
         bottom: 6,
-        left: 6
+        left: 6,
       }}
     >
       <img
@@ -51,10 +51,12 @@ const DisabledMode = ({ onShow }) => {
         data-rh-at="right"
         onClick={() => {
           const { host } = new URL(window.location);
-          chrome.storage.sync.get(["blacklist"], data => {
+          chrome.storage.sync.get(["blacklist"], (data) => {
             let blacklist = data.blacklist;
             if (blacklist) {
-              blacklist = blacklist.filter(currentHost => currentHost !== host);
+              blacklist = blacklist.filter(
+                (currentHost) => currentHost !== host
+              );
               chrome.storage.sync.set({ blacklist });
             }
             onShow();
@@ -74,7 +76,7 @@ const ActiveMode = ({ onHide }) => {
         bottom: 0,
         left: 0,
         width: "100%",
-        backgroundColor: "#36a0f5"
+        backgroundColor: "#36a0f5",
       }}
     >
       <div
@@ -87,7 +89,7 @@ const ActiveMode = ({ onHide }) => {
           padding: "12px 24px",
           fontFamily: "Arial",
           fontSize: 14,
-          color: "white"
+          color: "white",
         }}
       >
         <a href="https://www.scihive.org" target="_blank">
@@ -101,14 +103,15 @@ const ActiveMode = ({ onHide }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <div style={{ marginRight: 10 }}>
-            PDF file was detected. Would you like to read it on SciHive?
+            PDF file was detected. Would you like to upload it to your SciHive
+            library?
           </div>
           <a
-            href={`https://www.scihive.org/library?upload_link=${window.location}`}
+            href={`https://www.scihive.org/upload?uploadLink=${window.location}`}
             style={{ marginRight: 10 }}
           >
             <Button>Yes</Button>
@@ -119,7 +122,7 @@ const ActiveMode = ({ onHide }) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <div
@@ -127,7 +130,7 @@ const ActiveMode = ({ onHide }) => {
             css={{ "&:hover": { textDecoration: "underline" } }}
             onClick={() => {
               const url = new URL(window.location);
-              chrome.storage.sync.get(["blacklist"], data => {
+              chrome.storage.sync.get(["blacklist"], (data) => {
                 let blacklist = data.blacklist;
                 if (!blacklist) blacklist = [];
                 if (!blacklist.includes(url.host)) {

@@ -1,0 +1,41 @@
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/prop-types": 0,
+    "no-underscore-dangle": 0,
+    "import/imports-first": ["error", "absolute-first"],
+    "import/newline-after-import": "error",
+    "react/destructuring-assignment": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/interactive-supports-focus": 0,
+    "camelcase": "off",
+    "react/jsx-boolean-value": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/mouse-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-console": "off",
+    "no-plusplus": "off",
+    "import/prefer-default-export": "off",
+    "no-restricted-syntax": "off",
+    "react/no-danger": "off",
+    "no-param-reassign": "off",
+    "class-methods-use-this": "off"
+  },
+  "globals": {
+    "chrome": true,
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "Blob": true,
+    "navigator": true
+  },
+  "parser": "babel-eslint"
+}
